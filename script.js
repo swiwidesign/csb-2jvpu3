@@ -51,7 +51,7 @@ mm.add(
         scrollTrigger: {
           trigger: ".hero-image_track",
           start: "top center",
-          end: "bottom 90%",
+          end: "bottom 50%",
           scrub: 1,
           ease: "none",
           defer: true,
