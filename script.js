@@ -52,7 +52,7 @@ mm.add(
           trigger: ".hero-image_track",
           start: "top center",
           end: "bottom bottom",
-          scrub: 0.75,
+          scrub: 1,
           ease: "none",
           defer: true,
           lazy: true

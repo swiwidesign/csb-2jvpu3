@@ -11,7 +11,7 @@ window.addEventListener("resize", function () {
   setTrackHeights();
 });
 
-// Horizontal scroll
+// Horizontal scroll and counter
 $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
     childrenCounter = $(this).find("[counter]");
