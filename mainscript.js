@@ -37,13 +37,11 @@ mm.add(
   {
     // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
     isDesktop: `(min-width: 992px)`,
-    isTablet: `(max-width: 991px)`,
-    isMobile: `(max-width: 480px)`,
-    reduceMotion: "(prefers-reduced-motion: reduce)"
+    isMobile: `(max-width: 480px)`
   },
   (context) => {
     // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
-    let { isDesktop, isMobile, isTablet, reduceMotion } = context.conditions;
+    let { isDesktop, isMobile } = context.conditions;
 
     // HERO VIDEO
     gsap
@@ -51,8 +49,8 @@ mm.add(
         scrollTrigger: {
           trigger: ".hero-image_track",
           start: "top center",
-          end: "bottom 50%",
-          scrub: 1,
+          end: "bottom bottom",
+          scrub: 0.75,
           ease: "none",
           defer: true,
           lazy: true
@@ -71,7 +69,7 @@ mm.add(
         trigger: ".clippath_inside-left.is-2",
         start: "33% bottom",
         end: "top top",
-        scrub: 1,
+        scrub: 2,
         defaults: {}
       }
     });
@@ -91,7 +89,7 @@ mm.add(
           trigger: ".teaser_layout",
           start: "top bottom",
           end: "bottom center",
-          scrub: 3
+          scrub: 5
         }
       })
       .from(".teaser-bg-text", { y: "100vw", stagger: { each: 0.08 } });

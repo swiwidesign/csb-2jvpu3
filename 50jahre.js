@@ -12,9 +12,11 @@ window.addEventListener("resize", function () {
 });
 
 // Horizontal scroll and counter
+let tlMain;
 $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
-    childrenCounter = $(this).find("[counter]");
+    childrenCounter = $(this).find("[counter]"),
+    imageScale = $(this).find("[scale]");
 
   let tlMain = gsap.timeline({
     scrollTrigger: {
@@ -27,31 +29,33 @@ $(".section-height").each(function (index) {
   tlMain.to($(this).find(".track"), { xPercent: -100, ease: "none" });
 
   childrenYears.each(function (index) {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: $(this),
-        containerAnimation: tlMain,
-        start: "left center",
-        end: "left left",
-        scrub: true
-      }
-    });
-    tl.to(childrenCounter, {
-      innerText: $(this).attr("year"),
-      snap: "innerText"
-    });
+    let tlCounter = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: $(this),
+          containerAnimation: tlMain,
+          start: "left center",
+          end: "left left",
+          scrub: true
+        }
+      })
+      .to(childrenCounter, {
+        innerText: $(this).attr("year"),
+        snap: "innerText"
+      });
+  });
+
+  imageScale.each(function (index) {
+    let tlScale = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: $(this),
+          containerAnimation: tlMain,
+          start: "left center",
+          end: "left left",
+          scrub: 2
+        }
+      })
+      .from($(this).find(".image-100"), { scale: 1.3 });
   });
 });
-
-// FULL IMAGE
-gsap
-  .timeline({
-    scrollTrigger: {
-      trigger: ".panel-full",
-      containerAnimation: tlMain,
-      start: "left left",
-      end: "right left",
-      scrub: true
-    }
-  })
-  .from(".panel-full .image-100", { scale: 1.3 }, 0);
