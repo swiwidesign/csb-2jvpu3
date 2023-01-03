@@ -93,8 +93,8 @@ $("[year]").each(function (index) {
     scrollTrigger: {
       trigger: $(this),
       containerAnimation: tlMain,
-      start: "left center",
-      end: "left left",
+      // start: "left center",
+      // end: "left left",
       scrub: false
     }
   });
