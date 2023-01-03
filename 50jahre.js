@@ -12,42 +12,46 @@ window.addEventListener("resize", function () {
 });
 
 // Horizontal scroll
-let tlMain = gsap
-  .timeline({
+$(".section-height").each(function (index) {
+  let childrenYears = $(this).find("[year]"),
+    childrenCounter = $(this).find("[counter]");
+
+  let tlMain = gsap.timeline({
     scrollTrigger: {
-      trigger: ".section-height",
+      trigger: $(this),
       start: "top top",
       end: "98% bottom",
       scrub: 1
     }
-  })
-  .to(".track", {
-    xPercent: -100,
-    ease: "none"
   });
+  tlMain.to($(this).find(".track"), { xPercent: -100, ease: "none" });
 
-// hero photo
+  childrenYears.each(function (index) {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: $(this),
+        containerAnimation: tlMain,
+        start: "left center",
+        end: "left left",
+        scrub: true
+      }
+    });
+    tl.to(childrenCounter, {
+      innerText: $(this).attr("year"),
+      snap: "innerText"
+    });
+  });
+});
+
+// FULL IMAGE
 gsap
   .timeline({
     scrollTrigger: {
-      trigger: ".hero-panel",
+      trigger: ".panel-full",
       containerAnimation: tlMain,
       start: "left left",
       end: "right left",
       scrub: true
     }
   })
-  .from(".hero-panel_img", { scale: 1.6 }, 0);
-
-$("[year]").each(function (index) {
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: $(this),
-      containerAnimation: tlMain,
-      // start: "left center",
-      // end: "left left",
-      scrub: false
-    }
-  });
-  tl.to("[counter]", { innerText: $(this).attr("year"), snap: "innerText" });
-});
+  .from(".panel-full .image-100", { scale: 1.3 }, 0);
