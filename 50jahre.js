@@ -98,5 +98,5 @@ $("[year]").each(function (index) {
       scrub: 1
     }
   });
-  tl.to(".h-counter", { innerText: $(this).attr("year"), snap: "innerText" });
+  tl.to("[counter]", { innerText: $(this).attr("year"), snap: "innerText" });
 });
