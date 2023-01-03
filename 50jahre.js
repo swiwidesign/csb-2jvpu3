@@ -93,9 +93,9 @@ $("[year]").each(function (index) {
     scrollTrigger: {
       trigger: $(this),
       containerAnimation: tlMain,
-      start: "left right",
-      end: "left center",
-      scrub: 1
+      start: "left center",
+      end: "left left",
+      scrub: false
     }
   });
   tl.to("[counter]", { innerText: $(this).attr("year"), snap: "innerText" });
