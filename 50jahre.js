@@ -11,12 +11,12 @@ window.addEventListener("resize", function () {
   setTrackHeights();
 });
 
-// Horizontal scroll and counter
+// Horizontal scroll and animations
 let tlMain;
 $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
     childrenCounter = $(this).find("[counter]"),
-    imageScale = $(this).find("[scale]");
+    scaleDown = $(this).find("[scaletrigger]");
 
   let tlMain = gsap.timeline({
     scrollTrigger: {
@@ -45,17 +45,17 @@ $(".section-height").each(function (index) {
       });
   });
 
-  imageScale.each(function (index) {
-    let tlScale = gsap
+  scaleDown.each(function (index) {
+    let tlScaleDown = gsap
       .timeline({
         scrollTrigger: {
           trigger: $(this),
           containerAnimation: tlMain,
           start: "left center",
-          end: "left left",
+          end: "right left",
           scrub: 2
         }
       })
-      .from($(this).find(".image-100"), { scale: 1.3 });
+      .from($(this).find("[scaledown]"), { scale: 1.3 });
   });
 });

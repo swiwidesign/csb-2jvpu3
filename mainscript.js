@@ -37,11 +37,12 @@ mm.add(
   {
     // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
     isDesktop: `(min-width: 992px)`,
+    isTablet: `(max-width: 991px)`,
     isMobile: `(max-width: 480px)`
   },
   (context) => {
     // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
-    let { isDesktop, isMobile } = context.conditions;
+    let { isDesktop, isTablet, isMobile } = context.conditions;
 
     // HERO VIDEO
     gsap
