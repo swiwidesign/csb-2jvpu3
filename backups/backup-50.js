@@ -20,8 +20,37 @@ function updateLoaderText() {
   let progress = Math.round(counter.value);
   $(".loader-number").text(progress);
 }
+// Loader Out Animation
 function endLoaderAnimation() {
-  $(".trigger").click();
+  let tlcounter = gsap
+    .timeline({
+      delay: 0.4,
+      ease: Power2.easeInOut
+    })
+    .to(".loader", {
+      yPercent: -100,
+      duration: 0.8
+    })
+
+    .from(
+      ".intro-logo",
+      {
+        yPercent: 100,
+        duration: 0.4
+      },
+      "<50%"
+    )
+    .from(
+      ".is-50jahre",
+      {
+        opacity: 0,
+        duration: 1
+      },
+      "<50%"
+    )
+    .to(".loader", {
+      display: "none"
+    });
 }
 
 let tl = gsap.timeline({
@@ -101,6 +130,16 @@ $(".section-height").each(function (index) {
         }
       })
       .from($(this).find("[scaledown]"), { scale: 1.3 });
+  });
+  // fade out counter
+  gsap.to(".fixedjahr", {
+    scrollTrigger: {
+      trigger: ".section.is-last",
+      containerAnimation: tlMain,
+      start: "left center",
+      toggleActions: "restart none none reverse"
+    }, // start the animation when ".box" enters the viewport (once)
+    opacity: 0
   });
 });
 // fade in counter

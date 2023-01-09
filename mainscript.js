@@ -40,7 +40,7 @@ window.onload = function () {
       "<50%"
     )
     .from(
-      ".button-text",
+      ".button-text .is-nav",
       {
         opacity: 0,
         yPercent: -100,
@@ -165,7 +165,7 @@ function createAnimation() {
   for (let i = 0; i < lines.length; i++) {
     const chars = lines[i].getElementsByClassName("char");
     gsap.from(chars, {
-      opacity: 0.2,
+      color: "#E6EFF7",
       duration: 0.2,
       ease: Power2.easeInOut,
       stagger: { each: 0.4 },

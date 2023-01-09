@@ -5,7 +5,7 @@ let customEase =
 let counter = {
   value: 0
 };
-let loaderDuration = 6;
+let loaderDuration = 7;
 
 // If not a first time visit in this tab
 if (sessionStorage.getItem("visited") !== null) {
@@ -130,6 +130,16 @@ $(".section-height").each(function (index) {
         }
       })
       .from($(this).find("[scaledown]"), { scale: 1.3 });
+  });
+  // fade out counter
+  gsap.to(".fixedjahr", {
+    scrollTrigger: {
+      trigger: ".section.is-last",
+      containerAnimation: tlMain,
+      start: "left center",
+      toggleActions: "restart none none reverse"
+    }, // start the animation when ".box" enters the viewport (once)
+    opacity: 0
   });
 });
 // fade in counter
