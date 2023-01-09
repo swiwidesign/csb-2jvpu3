@@ -93,7 +93,7 @@ mm.add(
       .to(
         ".hero-video_wrapper .image-2-3",
         { paddingTop: isMobile ? "66%" : "100vh" },
-        0
+        "<"
       );
 
     // CLIPPATH
