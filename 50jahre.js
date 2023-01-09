@@ -141,6 +141,18 @@ $(".section-height").each(function (index) {
     }, // start the animation when ".box" enters the viewport (once)
     opacity: 0
   });
+  // image slide
+  let tlSlide = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: $(this).find("[slidetrack]"),
+        containerAnimation: tlMain,
+        start: "left left",
+        end: "right right",
+        scrub: 2
+      }
+    })
+    .from($(this).find(".image-move"), { x: "100vw", stagger: { each: 0.05 } });
 });
 // fade in counter
 gsap.from(".fixedjahr", {
