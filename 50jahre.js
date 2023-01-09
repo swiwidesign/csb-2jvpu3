@@ -9,7 +9,7 @@ let loaderDuration = 7;
 
 // If not a first time visit in this tab
 if (sessionStorage.getItem("visited") !== null) {
-  loaderDuration = 2;
+  loaderDuration = 1.5;
   counter = {
     value: 75
   };

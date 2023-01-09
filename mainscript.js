@@ -91,7 +91,7 @@ mm.add(
       })
       .to(".hero-video_wrapper", { width: "100%" })
       .to(
-        ".hero-video_wrapper .image-2-3",
+        ".hero-video_wrapper .image-horizontal",
         { paddingTop: isMobile ? "66%" : "100vh" },
         "<"
       );
