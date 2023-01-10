@@ -90,6 +90,7 @@ $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
     childrenCounter = $(this).find("[counter]"),
     scaleDown = $(this).find("[scaletrigger]");
+  scaleImage = $(this).find(".image-move");
 
   let tlMain = gsap.timeline({
     scrollTrigger: {
@@ -117,7 +118,7 @@ $(".section-height").each(function (index) {
         snap: "innerText"
       });
   });
-  // effects
+  // image scale
   scaleDown.each(function (index) {
     let tlScaleDown = gsap
       .timeline({
@@ -141,18 +142,35 @@ $(".section-height").each(function (index) {
     }, // start the animation when ".box" enters the viewport (once)
     opacity: 0
   });
-  // image slide
-  let tlSlide = gsap
+
+  let tlCar = gsap
     .timeline({
       scrollTrigger: {
-        trigger: $(this).find("[slidetrack]"),
+        trigger: $(this).find("[cartrigger]"),
         containerAnimation: tlMain,
-        start: "left left",
-        end: "right right",
-        scrub: 2
+        start: "right right",
+        end: "right left",
+        scrub: true
       }
     })
-    .from($(this).find(".image-move"), { x: "100vw", stagger: { each: 0.05 } });
+    .to($(this).find(".image-autoheight"), {
+      x: "-20vw"
+    });
+
+  // image scale
+  scaleImage.each(function (index) {
+    let tlScaleImage = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: $(this),
+          containerAnimation: tlMain,
+          start: "left left",
+          end: "right left",
+          scrub: 1
+        }
+      })
+      .to($(this), { scale: 0.3 });
+  });
 });
 // fade in counter
 gsap.from(".fixedjahr", {
