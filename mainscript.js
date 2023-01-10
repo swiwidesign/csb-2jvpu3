@@ -82,7 +82,7 @@ mm.add(
         scrollTrigger: {
           trigger: ".hero-image_track",
           start: "top center",
-          end: "bottom bottom",
+          end: "bottom bottom+=100px",
           scrub: 0.75,
           ease: "none",
           defer: true,
