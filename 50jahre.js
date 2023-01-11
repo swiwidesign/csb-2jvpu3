@@ -5,11 +5,11 @@ let customEase =
 let counter = {
   value: 0
 };
-let loaderDuration = 7;
+let loaderDuration = 9;
 
 // If not a first time visit in this tab
 if (sessionStorage.getItem("visited") !== null) {
-  loaderDuration = 1.5;
+  loaderDuration = 2;
   counter = {
     value: 75
   };
