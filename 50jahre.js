@@ -130,6 +130,9 @@ $(".section-height").each(function (index) {
           scrub: 2
         }
       })
+      .set($(this).find("[scaledown]"), {
+        "will-change": "transform"
+      })
       .from($(this).find("[scaledown]"), { scale: 1.3 });
   });
   // fade out counter
