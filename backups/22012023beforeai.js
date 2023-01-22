@@ -53,25 +53,24 @@ function endLoaderAnimation() {
     });
 }
 
-let tl = gsap
-  .timeline({
-    onComplete: endLoaderAnimation
-  })
-  .to(counter, {
-    value: 100,
-    onUpdate: updateLoaderText,
+let tl = gsap.timeline({
+  onComplete: endLoaderAnimation
+});
+tl.to(counter, {
+  value: 100,
+  onUpdate: updateLoaderText,
+  duration: loaderDuration,
+  ease: CustomEase.create("custom", customEase)
+});
+tl.to(
+  ".loader_progress",
+  {
+    width: "100%",
     duration: loaderDuration,
     ease: CustomEase.create("custom", customEase)
-  })
-  .to(
-    ".loader_progress",
-    {
-      width: "100%",
-      duration: loaderDuration,
-      ease: CustomEase.create("custom", customEase)
-    },
-    0
-  );
+  },
+  0
+);
 
 // HORIZONTAL
 function setTrackHeights() {
@@ -89,7 +88,8 @@ window.addEventListener("resize", function () {
 let tlMain;
 $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
-    childrenCounter = $(this).find("[counter]");
+    childrenCounter = $(this).find("[counter]"),
+    scaleImage = $(this).find(".image-move");
 
   let tlMain = gsap
     .timeline({
@@ -132,6 +132,20 @@ $(".section-height").each(function (index) {
     }, // start the animation when ".box" enters the viewport (once)
     opacity: 0
   });
+
+  let tlCar = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: $(this).find("[cartrigger]"),
+        containerAnimation: tlMain,
+        start: "right right",
+        end: "right left",
+        scrub: true
+      }
+    })
+    .to($(this).find(".image-autoheight"), {
+      x: "-20vw"
+    });
 
   // image scale small
   scaleImage.each(function (index) {
