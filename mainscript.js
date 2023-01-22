@@ -93,6 +93,9 @@ mm.add(
           lazy: true
         }
       })
+      .set(".hero-video_wrapper, .hero-video_wrapper .image-horizontal", {
+        "will-change": "width, padding"
+      })
       .to(".hero-video_wrapper", { width: "100%" })
       .to(
         ".hero-video_wrapper .image-horizontal",

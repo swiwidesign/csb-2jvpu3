@@ -92,15 +92,16 @@ $(".section-height").each(function (index) {
     scaleDown = $(this).find("[scaletrigger]");
   scaleImage = $(this).find(".image-move");
 
-  let tlMain = gsap.timeline({
-    scrollTrigger: {
-      trigger: $(this),
-      start: "top top",
-      end: "98% bottom",
-      scrub: 1
-    }
-  });
-  tlMain.to($(this).find(".track"), { xPercent: -100, ease: "none" });
+  let tlMain = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: $(this),
+        start: "top top",
+        end: "98% bottom",
+        scrub: 1
+      }
+    })
+    .to($(this).find(".track"), { xPercent: -100, ease: "none" });
 
   childrenYears.each(function (index) {
     let tlCounter = gsap
@@ -130,9 +131,6 @@ $(".section-height").each(function (index) {
           scrub: 2
         }
       })
-      .set($(this).find("[scaledown]"), {
-        "will-change": "transform"
-      })
       .from($(this).find("[scaledown]"), { scale: 1.3 });
   });
   // fade out counter
@@ -160,7 +158,7 @@ $(".section-height").each(function (index) {
       x: "-20vw"
     });
 
-  // image scale
+  // image scale small
   scaleImage.each(function (index) {
     let tlScaleImage = gsap
       .timeline({

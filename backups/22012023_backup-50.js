@@ -5,7 +5,7 @@ let customEase =
 let counter = {
   value: 0
 };
-let loaderDuration = 6;
+let loaderDuration = 8;
 
 // If not a first time visit in this tab
 if (sessionStorage.getItem("visited") !== null) {
@@ -90,16 +90,21 @@ $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
     childrenCounter = $(this).find("[counter]"),
     scaleDown = $(this).find("[scaletrigger]");
+  scaleImage = $(this).find(".image-move");
 
-  let tlMain = gsap.timeline({
-    scrollTrigger: {
-      trigger: $(this),
-      start: "top top",
-      end: "98% bottom",
-      scrub: 1
-    }
-  });
-  tlMain.to($(this).find(".track"), { xPercent: -100, ease: "none" });
+  let tlMain = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: $(this),
+        start: "top top",
+        end: "98% bottom",
+        scrub: 1
+      }
+    })
+    .set($(this).find(".track"), {
+      "will-change": "transform"
+    })
+    .to($(this).find(".track"), { xPercent: -100, ease: "none" });
 
   childrenYears.each(function (index) {
     let tlCounter = gsap
@@ -117,7 +122,7 @@ $(".section-height").each(function (index) {
         snap: "innerText"
       });
   });
-  // effects
+  // image scale
   scaleDown.each(function (index) {
     let tlScaleDown = gsap
       .timeline({
@@ -128,6 +133,9 @@ $(".section-height").each(function (index) {
           end: "right left",
           scrub: 2
         }
+      })
+      .set($(this).find("[scaledown]"), {
+        "will-change": "transform"
       })
       .from($(this).find("[scaledown]"), { scale: 1.3 });
   });
@@ -140,6 +148,35 @@ $(".section-height").each(function (index) {
       toggleActions: "restart none none reverse"
     }, // start the animation when ".box" enters the viewport (once)
     opacity: 0
+  });
+
+  let tlCar = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: $(this).find("[cartrigger]"),
+        containerAnimation: tlMain,
+        start: "right right",
+        end: "right left",
+        scrub: true
+      }
+    })
+    .to($(this).find(".image-autoheight"), {
+      x: "-20vw"
+    });
+
+  // image scale small
+  scaleImage.each(function (index) {
+    let tlScaleImage = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: $(this),
+          containerAnimation: tlMain,
+          start: "left left",
+          end: "right left",
+          scrub: 1
+        }
+      })
+      .to($(this), { scale: 0.3 });
   });
 });
 // fade in counter

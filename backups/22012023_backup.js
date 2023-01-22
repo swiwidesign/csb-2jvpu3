@@ -25,6 +25,10 @@ window.onload = function () {
       delay: 0.2,
       ease: Power4.easeInOut
     })
+    .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
+      "will-change": "opacity, transform"
+    })
+    .set(".nav_logo-wrapper", { "will-change": "opacity, transform" })
     .from(".nav_logo-wrapper", {
       opacity: 0,
       yPercent: -100,
@@ -40,7 +44,7 @@ window.onload = function () {
       "<50%"
     )
     .from(
-      ".button-text",
+      ".button-text .is-nav",
       {
         opacity: 0,
         yPercent: -100,
@@ -82,18 +86,21 @@ mm.add(
         scrollTrigger: {
           trigger: ".hero-image_track",
           start: "top center",
-          end: "bottom bottom",
+          end: "bottom bottom+=100px",
           scrub: 0.75,
           ease: "none",
           defer: true,
           lazy: true
         }
       })
+      .set(".hero-video_wrapper, .hero-video_wrapper .image-horizontal", {
+        "will-change": "width, padding"
+      })
       .to(".hero-video_wrapper", { width: "100%" })
       .to(
-        ".hero-video_wrapper .image-2-3",
+        ".hero-video_wrapper .image-horizontal",
         { paddingTop: isMobile ? "66%" : "100vh" },
-        0
+        "<"
       );
 
     // CLIPPATH
