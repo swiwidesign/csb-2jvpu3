@@ -106,20 +106,17 @@ $(".section-height").each(function (index) {
     .to($(this).find(".track"), { xPercent: -100, ease: "none" });
 
   childrenYears.each(function (index) {
-    let tlCounter = gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: $(this),
-          containerAnimation: tlMain,
-          start: "left center",
-          end: "left left",
-          scrub: true
-        }
-      })
-      .to(childrenCounter, {
-        innerText: $(this).attr("year"),
-        snap: "innerText"
-      });
+    gsap.to(childrenCounter, {
+      scrollTrigger: {
+        trigger: $(this),
+        containerAnimation: tlMain,
+        start: "left center",
+        end: "left left",
+        scrub: true
+      }, // start the animation when ".box" enters the viewport (once)
+      innerText: $(this).attr("year"),
+      snap: "innerText"
+    });
   });
 
   // fade out counter
