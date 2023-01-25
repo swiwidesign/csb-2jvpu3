@@ -89,7 +89,7 @@ let tlMain;
 $(".section-height").each(function (index) {
   let childrenYears = $(this).find("[year]"),
     childrenCounter = $(this).find("[counter]"),
-    scaleImage = $(this).find(".image-move");
+    scaleImage = $(this).find("[imagemove]");
 
   let tlMain = gsap
     .timeline({
