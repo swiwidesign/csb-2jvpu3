@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger);
+
 //LOADER
 //variables
 let customEase =
@@ -5,7 +7,7 @@ let customEase =
 let counter = {
   value: 0
 };
-let loaderDuration = 8;
+let loaderDuration = 9;
 
 // If not a first time visit in this tab
 if (sessionStorage.getItem("visited") !== null) {
@@ -100,9 +102,6 @@ $(".section-height").each(function (index) {
         scrub: 1
       }
     })
-    .set($(this).find(".track"), {
-      "will-change": "transform"
-    })
     .to($(this).find(".track"), { xPercent: -100, ease: "none" });
 
   childrenYears.each(function (index) {
@@ -129,13 +128,10 @@ $(".section-height").each(function (index) {
       containerAnimation: tlMain,
       start: "left center",
       toggleActions: "restart none none reverse"
-    }, // start the animation when ".box" enters the viewport (once)
+    },
     opacity: 0
   });
-  // create
   let mm = gsap.matchMedia();
-
-  // add a media query. When it matches, the associated function will run
   // image scale small
   mm.add("(min-width: 800px)", () => {
     scaleImage.each(function (index) {
@@ -146,7 +142,7 @@ $(".section-height").each(function (index) {
           start: "left left",
           end: "right left",
           scrub: 1
-        }, // start the animation when ".box" enters the viewport (once)
+        },
         scale: 0.3
       });
     });
@@ -158,6 +154,6 @@ gsap.from(".fixedjahr", {
     trigger: ".section-height",
     start: "top top",
     toggleActions: "restart none none reverse"
-  }, // start the animation when ".box" enters the viewport (once)
+  },
   opacity: 0
 });
