@@ -18,6 +18,8 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+gsap.registerPlugin(ScrollTrigger);
+
 //PAGE INTRO
 window.onload = function () {
   let tlintro = gsap
