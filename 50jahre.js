@@ -113,7 +113,8 @@ $(".section-height").each(function (index) {
           containerAnimation: tlMain,
           start: "left center",
           end: "left left",
-          scrub: true
+          scrub: true,
+          ease: "none"
         }
       })
       .to(childrenCounter, {
