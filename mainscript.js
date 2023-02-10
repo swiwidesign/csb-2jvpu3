@@ -131,7 +131,8 @@ mm.add(
           trigger: ".teaser_layout",
           start: "top bottom",
           end: "bottom top",
-          scrub: 5
+          scrub: 5,
+          ease: "none"
         }
       })
       .from(".teaser-bg-text", { y: "100vw", stagger: { each: 0.08 } });

@@ -99,7 +99,8 @@ $(".section-height").each(function (index) {
         trigger: $(this),
         start: "top top",
         end: "98% bottom",
-        scrub: 1
+        scrub: 1,
+        ease: "none"
       }
     })
     .to($(this).find(".track"), { xPercent: -100, ease: "none" });
