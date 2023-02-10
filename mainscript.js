@@ -65,7 +65,6 @@ $(".nav_button.is-close, .nav_slideout-bg").on("click", function () {
   $("body").removeClass("no-scroll");
   lenis.start();
 });
-gsap.registerPlugin(ScrollTrigger);
 
 //MATCHMEDIA
 let mm = gsap.matchMedia(),
@@ -185,7 +184,8 @@ function createAnimation() {
         end: "bottom center",
         scrub: true,
         defer: true,
-        lazy: true
+        lazy: true,
+        ease: "none"
       }
     });
   }
