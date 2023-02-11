@@ -30,7 +30,6 @@ window.onload = function () {
     .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
       "will-change": "opacity, transform"
     })
-    .set(".nav_logo-wrapper", { "will-change": "opacity, transform" })
     .from(".nav_logo-wrapper", {
       opacity: 0,
       yPercent: -100,
