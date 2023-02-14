@@ -21,38 +21,39 @@ requestAnimationFrame(raf);
 gsap.registerPlugin(ScrollTrigger);
 
 //PAGE INTRO
-
-let tlintro = gsap
-  .timeline({
-    delay: 0.2,
-    ease: Power4.easeInOut
-  })
-  .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
-    "will-change": "opacity, transform"
-  })
-  .from(".nav_logo-wrapper", {
-    opacity: 0,
-    yPercent: -100,
-    duration: 0.6
-  })
-  .from(
-    ".nav_button-wrapper",
-    {
+window.onload = function () {
+  let tlintro = gsap
+    .timeline({
+      delay: 0.2,
+      ease: Power4.easeInOut
+    })
+    .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
+      "will-change": "opacity, transform"
+    })
+    .from(".nav_logo-wrapper", {
       opacity: 0,
       yPercent: -100,
       duration: 0.6
-    },
-    "<50%"
-  )
-  .from(
-    ".button-text .is-nav",
-    {
-      opacity: 0,
-      yPercent: -100,
-      duration: 0.6
-    },
-    "<75%"
-  );
+    })
+    .from(
+      ".nav_button-wrapper",
+      {
+        opacity: 0,
+        yPercent: -100,
+        duration: 0.6
+      },
+      "<50%"
+    )
+    .from(
+      ".button-text .is-nav",
+      {
+        opacity: 0,
+        yPercent: -100,
+        duration: 0.6
+      },
+      "<75%"
+    );
+};
 
 // no scroll on menu click
 $(".nav_button").on("click", function () {
