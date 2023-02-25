@@ -57,10 +57,11 @@ let tlintro = gsap
 // no scroll on menu click
 $(".nav_button").on("click", function () {
   $("body").addClass("no-scroll");
-  lenis.stop();
+  lenis.destroy();
 });
 $(".nav_button.is-close, .nav_slideout-bg").on("click", function () {
   $("body").removeClass("no-scroll");
+  requestAnimationFrame(raf);
   lenis.start();
 });
 

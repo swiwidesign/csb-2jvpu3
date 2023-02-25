@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.normalizeScroll(true);
 
 //LOADER
 //variables
