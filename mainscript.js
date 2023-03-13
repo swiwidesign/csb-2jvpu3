@@ -93,12 +93,12 @@ mm.add(
           lazy: true
         }
       })
-      .set(".hero-video_wrapper, .hero-video_wrapper .image-horizontal", {
+      .set(".hero-video_wrapper, .hero-video_wrapper .video-horizontal", {
         "will-change": "width, padding"
       })
       .to(".hero-video_wrapper", { width: "100%" })
       .to(
-        ".hero-video_wrapper .image-horizontal",
+        ".hero-video_wrapper .video-horizontal",
         { paddingTop: isMobile ? "66%" : "100vh" },
         "<"
       );
