@@ -99,7 +99,7 @@ mm.add(
       .to(".hero-video_wrapper", { width: "100%" })
       .to(
         ".hero-video_wrapper .video-horizontal",
-        { paddingTop: isMobile ? "56%" : "100vh" },
+        { paddingTop: isMobile ? "66%" : "100vh" },
         "<"
       );
 
