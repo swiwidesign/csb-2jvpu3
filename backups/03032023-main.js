@@ -1,11 +1,11 @@
-//LENIS
+//LENIS scroll
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-  direction: "vertical", // vertical, horizontal
-  gestureDirection: "vertical", // vertical, horizontal, both
-  smooth: true,
-  mouseMultiplier: 1,
+  orientation: "vertical", // vertical, horizontal
+  gestureOrientation: "vertical", // vertical, horizontal, both
+  smoothWheel: true,
+  wheelMultiplier: 1,
   smoothTouch: false,
   touchMultiplier: 2,
   infinite: false
@@ -21,47 +21,47 @@ requestAnimationFrame(raf);
 gsap.registerPlugin(ScrollTrigger);
 
 //PAGE INTRO
-window.onload = function () {
-  let tlintro = gsap
-    .timeline({
-      delay: 0.2,
-      ease: Power4.easeInOut
-    })
-    .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
-      "will-change": "opacity, transform"
-    })
-    .from(".nav_logo-wrapper", {
+
+let tlintro = gsap
+  .timeline({
+    delay: 0.2,
+    ease: Power4.easeInOut
+  })
+  .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
+    "will-change": "opacity, transform"
+  })
+  .from(".nav_logo-wrapper", {
+    opacity: 0,
+    yPercent: -100,
+    duration: 0.6
+  })
+  .from(
+    ".nav_button-wrapper",
+    {
       opacity: 0,
       yPercent: -100,
       duration: 0.6
-    })
-    .from(
-      ".nav_button-wrapper",
-      {
-        opacity: 0,
-        yPercent: -100,
-        duration: 0.6
-      },
-      "<50%"
-    )
-    .from(
-      ".button-text .is-nav",
-      {
-        opacity: 0,
-        yPercent: -100,
-        duration: 0.6
-      },
-      "<75%"
-    );
-};
+    },
+    "<50%"
+  )
+  .from(
+    ".button-text .is-nav",
+    {
+      opacity: 0,
+      yPercent: -100,
+      duration: 0.6
+    },
+    "<75%"
+  );
 
 // no scroll on menu click
 $(".nav_button").on("click", function () {
   $("body").addClass("no-scroll");
-  lenis.stop();
+  lenis.destroy();
 });
 $(".nav_button.is-close, .nav_slideout-bg").on("click", function () {
   $("body").removeClass("no-scroll");
+  requestAnimationFrame(raf);
   lenis.start();
 });
 
@@ -93,12 +93,12 @@ mm.add(
           lazy: true
         }
       })
-      .set(".hero-video_wrapper, .hero-video_wrapper .image-horizontal", {
+      .set(".hero-video_wrapper, .hero-video_wrapper .video-horizontal", {
         "will-change": "width, padding"
       })
       .to(".hero-video_wrapper", { width: "100%" })
       .to(
-        ".hero-video_wrapper .image-horizontal",
+        ".hero-video_wrapper .video-horizontal",
         { paddingTop: isMobile ? "66%" : "100vh" },
         "<"
       );

@@ -1,22 +1,27 @@
-//LENIS scroll
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-  orientation: "vertical", // vertical, horizontal
-  gestureOrientation: "vertical", // vertical, horizontal, both
-  smoothWheel: true,
-  wheelMultiplier: 1,
-  smoothTouch: false,
-  touchMultiplier: 2,
-  infinite: false
+var Webflow = Webflow || [];
+Webflow.push(function () {
+  if (!Webflow.env("editor")) {
+    // LENIS scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      orientation: "vertical", // vertical, horizontal
+      gestureOrientation: "vertical", // vertical, horizontal, both
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }
 });
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
 
 gsap.registerPlugin(ScrollTrigger);
 
