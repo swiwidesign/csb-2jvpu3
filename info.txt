@@ -1,0 +1,4 @@
+old links:
+https://csb-2jvpu3.netlify.app/mainscript.js
+https://csb-2jvpu3.netlify.app/swiper.js
+https://csb-2jvpu3.netlify.app/50jahre.js
