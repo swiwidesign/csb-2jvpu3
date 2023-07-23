@@ -37,7 +37,7 @@ Webflow.push(function () {
 
 gsap.registerPlugin(ScrollTrigger);
 
-//PAGE INTRO
+//PAGE INTROS
 
 let tlintro = gsap
   .timeline({
