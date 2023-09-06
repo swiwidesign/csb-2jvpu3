@@ -10,14 +10,14 @@ let counter = {
 };
 let loaderDuration = 9;
 
-// If not a first time visit in this tab
+/*// If not a first time visit in this tab
 if (sessionStorage.getItem("visited") !== null) {
   loaderDuration = 2;
   counter = {
     value: 75
   };
 }
-sessionStorage.setItem("visited", "true");
+sessionStorage.setItem("visited", "true");*/
 
 function updateLoaderText() {
   let progress = Math.round(counter.value);
