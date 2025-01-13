@@ -27,8 +27,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             lenis.stop();
         });
         $("[data-lenis-toggle]").on("click", function () {
-            $(this).toggleClass("stop-scroll");
-            if ($(this).hasClass("stop-scroll")) {
+            $(this).toggleClass("no-scroll");
+            if ($(this).hasClass("no-scroll")) {
                 lenis.stop();
             } else {
                 lenis.start();
@@ -81,16 +81,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             "<75%"
         );
 
-    // no scroll on menu click
-    $(".nav_button").on("click", function () {
-        $("body").addClass("no-scroll");
-        lenis.destroy();
-    });
-    $(".nav_button.is-close, .nav_slideout-bg").on("click", function () {
-        $("body").removeClass("no-scroll");
-        requestAnimationFrame(raf);
-        lenis.start();
-    });
+
 
     //MATCHMEDIA
     let mm = gsap.matchMedia(),
