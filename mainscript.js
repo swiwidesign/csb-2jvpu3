@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", (event) => {
 var Webflow = Webflow || [];
 var lenis;
 
@@ -216,3 +217,5 @@ function createAnimation() {
         });
     }
 }
+      //FOOTER END
+});
