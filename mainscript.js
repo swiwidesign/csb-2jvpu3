@@ -27,8 +27,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             lenis.stop();
         });
         $("[data-lenis-toggle]").on("click", function () {
-            $(this).toggleClass("no-scroll");
-            if ($(this).hasClass("no-scroll")) {
+            $(this).toggleClass("stop-scroll");
+            if ($(this).hasClass("stop-scroll")) {
                 lenis.stop();
             } else {
                 lenis.start();
@@ -80,8 +80,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             },
             "<75%"
         );
-
-
 
     //MATCHMEDIA
     let mm = gsap.matchMedia(),
